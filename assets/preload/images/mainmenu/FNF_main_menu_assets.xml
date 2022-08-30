@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="FNF_main_menu_assets.png">
+	<!-- Created with Adobe Animate version 20.0.3.25487 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="ost basic0000" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost basic0001" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost basic0002" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost basic0003" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost basic0004" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost basic0005" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost basic0006" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost basic0007" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost basic0008" x="0" y="0" width="330" height="330"/>
+	<SubTexture name="ost white0000" x="330" y="0" width="350" height="350"/>
+	<SubTexture name="ost white0001" x="330" y="0" width="350" height="350"/>
+	<SubTexture name="ost white0002" x="330" y="0" width="350" height="350"/>
+	<SubTexture name="ost white0003" x="330" y="0" width="350" height="350"/>
+	<SubTexture name="ost white0004" x="330" y="0" width="350" height="350"/>
+	<SubTexture name="ost white0005" x="330" y="0" width="350" height="350"/>
+	<SubTexture name="ost white0006" x="330" y="0" width="350" height="350"/>
+	<SubTexture name="ost white0007" x="330" y="0" width="350" height="350"/>
+	<SubTexture name="ost white0008" x="330" y="0" width="350" height="350"/>
+</TextureAtlas>
