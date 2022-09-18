@@ -1137,7 +1137,7 @@ class PlayState extends MusicBeatState
 
 		healthBarBG = new AttachedSprite('healthBar');
 		healthBarBG.y = FlxG.height * 0.89;
-		healthBarBG.screenCenter(X);
+		healthBarBG.screenCenter();
 		healthBarBG.scrollFactor.set();
 		healthBarBG.visible = !ClientPrefs.hideHud;
 		healthBarBG.xAdd = -4;

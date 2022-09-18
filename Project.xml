@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Psych Engine" file="PsychEngine" packageName="com.shadowmario.psychengine" package="com.shadowmario.psychengine" main="Main" version="0.2.8" company="ShadowMario" />
+	<app title="Vs Mouse 3.0" file="Vs Mouse" packageName="com.shadowmario.psychengine" package="com.shadowmario.psychengine" main="Main" version="0.2.8" company="Widen2wo" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -87,6 +87,11 @@
 		<library name="week5"         preload="false" />
 		<library name="week6"         preload="false" />
 		<library name="week7"         preload="false" />
+		<library name="disk1"         preload="false" />
+		<library name="disk2"         preload="false" />
+		<library name="disk3"         preload="false" />	
+		<library name="minigames"     preload="false" />			
+		
 	</section>
 	
 	<assets path="assets/videos"        library="videos"        if="VIDEOS_ALLOWED"/>
@@ -106,7 +111,15 @@
 	<assets path="assets/week6"         library="week6"         exclude="*.mp3" unless="web"/>
 	<assets path="assets/week7"         library="week7"         exclude="*.ogg" if="web"/>
 	<assets path="assets/week7"         library="week7"         exclude="*.mp3" unless="web"/>
-	
+	<assets path="assets/disk1"         library="disk1"         exclude="*.ogg" if="web"/>
+	<assets path="assets/disk1"         library="disk1"         exclude="*.mp3" unless="web"/>
+	<assets path="assets/disk2"         library="disk2"         exclude="*.ogg" if="web"/>
+	<assets path="assets/disk2"         library="disk2"         exclude="*.mp3" unless="web"/>
+	<assets path="assets/disk3"         library="disk3"         exclude="*.ogg" if="web"/>
+	<assets path="assets/disk3"         library="disk3"         exclude="*.mp3" unless="web"/>
+	<assets path="assets/minigames"     library="minigames"     exclude="*.ogg" if="web"/>
+	<assets path="assets/minigames"     library="minigames"     exclude="*.mp3" unless="web"/>
+
 	<section if="MODS_ALLOWED">
 		<assets path='example_mods' rename='mods' embed='false'/>
 	</section>

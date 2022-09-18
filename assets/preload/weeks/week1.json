@@ -1,8 +1,9 @@
 {
 	"songs": [
-		["Bopeebo", "dad", [146, 113, 253]],
-		["Fresh", "dad", [146, 113, 253]],
-		["Dad Battle", "dad", [146, 113, 253]]
+		["Distraction", "dad", [146, 113, 253]],
+		["Interference", "dad", [146, 113, 253]],
+		["Hungry", "dad", [146, 113, 253]],
+		["Labrat", "dad", [146, 113, 253]]
 	],
 
 	"weekCharacters": [
@@ -12,7 +13,7 @@
 	],
 	"weekBackground": "stage",
 
-	"storyName": "Daddy Dearest",
+	"storyName": "More than Meets the Eye",
 	"weekBefore": "tutorial",
 	"weekName": "Week 1",
 	"startUnlocked": true,
