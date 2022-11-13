@@ -504,6 +504,15 @@ class PlayState extends MusicBeatState
 
 			  sexyTrees = new BGSprite(('trees'), 500, 300, 0.9, 0.9);
 			  add(sexyTrees);
+			case 'clubhouse': //i love markus
+			var backgroundCH:BGSprite = new BGSprite(('clubhouse/Background (old)'), 300, 100, 1, 1);
+			add(backgroundCH);
+
+			var sofaCH:BGSprite = new BGSprite(('Sofa (old)'), 300, 100, 1, 1);
+			add(sofaCH);
+
+			var chairCH:BGSprite = new BGSprite(('Chair (old)'), 300, 100, 1, 1); //i literally copypasted my code 2 times
+			add(chairCH);
 
 			case 'stage': //Week 1
 				var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
