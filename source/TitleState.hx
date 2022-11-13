@@ -157,6 +157,16 @@ class TitleState extends MusicBeatState
 		}
 		#end
 
+
+
+		for(i in 0...90)
+		{
+			new FlxTimer().start(1, function(tmr:FlxTimer){
+				trace("ola soy denker");
+			});
+			
+		}
+
 		Highscore.load();
 
 		// IGNORE THIS!!!
@@ -763,7 +773,8 @@ class TitleState extends MusicBeatState
 			{
 				remove(ngSpr);
 				remove(credGroup);
-				FlxG.camera.flash(FlxColor.RED, 4);
+				FlxG.camera.flash(FlxColor.BLACK, 4);
+
 
 				var easteregg:String = FlxG.save.data.psychDevsEasterEgg;
 				if (easteregg == null) easteregg = '';

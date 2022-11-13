@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": true,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "MickeyIdle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				78,
+				-13
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "MickeyLeft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				16,
+				-20
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "MickeyDown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				74,
+				15
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "MickeyRight",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				-31,
+				61
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "MickeyUp",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/PlaneCrazyTest2",
+	"position": [
+		-10,
+		180
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		-180,
+		80
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

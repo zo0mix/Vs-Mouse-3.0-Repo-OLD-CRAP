@@ -6,6 +6,7 @@ import flixel.FlxGame;
 import flixel.FlxState;
 import openfl.Assets;
 import openfl.Lib;
+import flixel.text.FlxText;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
@@ -41,6 +42,11 @@ class Main extends Sprite
 	public static function main():Void
 	{
 		Lib.current.addChild(new Main());
+		FlxG.mouse.load('assets/images/i love you flixel.png');
+		
+		var onlyDemo:FlxText = new FlxText(10, 20, 'Only DEMO purposes only.');
+		onlyDemo.setFormat('pixel.ttf', 26);
+		//addChild(onlyDemo);
 	}
 
 	public function new()
@@ -82,7 +88,7 @@ class Main extends Sprite
 		}
 	
 		ClientPrefs.loadDefaultKeys();
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
+		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash));
 
 		#if !mobile
 		fpsVar = new FPS(10, 3, 0xFFFFFF);
@@ -93,6 +99,7 @@ class Main extends Sprite
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
 		#end
+
 
 		#if html5
 		FlxG.autoPause = false;

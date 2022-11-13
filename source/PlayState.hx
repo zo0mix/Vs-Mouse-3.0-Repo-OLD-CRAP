@@ -33,6 +33,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxBar;
 import flixel.util.FlxCollision;
+import flixel.addons.display.FlxBackdrop;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxStringUtil;
@@ -48,6 +49,7 @@ import editors.ChartingState;
 import editors.CharacterEditorState;
 import flixel.group.FlxSpriteGroup;
 import flixel.input.keyboard.FlxKey;
+import openfl.filters.ShaderFilter;
 import Note.EventNote;
 import openfl.events.KeyboardEvent;
 import flixel.effects.particles.FlxEmitter;
@@ -92,6 +94,8 @@ class PlayState extends MusicBeatState
 	public var modchartSounds:Map<String, FlxSound> = new Map<String, FlxSound>();
 	public var modchartTexts:Map<String, ModchartText> = new Map<String, ModchartText>();
 	public var modchartSaves:Map<String, FlxSave> = new Map<String, FlxSave>();
+
+	var shitShader:WaveShader = new WaveShader();
 
 	//event variables
 	private var isCameraOnForcedPos:Bool = false;
@@ -164,6 +168,10 @@ class PlayState extends MusicBeatState
 	public var health:Float = 1;
 	public var combo:Int = 0;
 
+	// lab sexy
+	var sexyBG:FlxSprite;
+	var sexyTrees:FlxSprite;
+
 	private var healthBarBG:AttachedSprite;
 	public var healthBar:FlxBar;
 	var songPercent:Float = 0;
@@ -200,6 +208,14 @@ class PlayState extends MusicBeatState
 	public var camGame:FlxCamera;
 	public var camOther:FlxCamera;
 	public var cameraSpeed:Float = 1;
+
+	//vehement
+	var texDialogue:FlxText;
+	var cinematicLines:FlxSprite;
+	var cinematicLines1:FlxSprite;
+	var dramaticBG:FlxSprite;
+	var dialog1:String = Assets.getText('assets/data/vehement/dialogues/dialogu1.txt');
+	var dialog2:String = Assets.getText('assets/data/vehement/dialogues/dialogu2.txt');
 
 	var dialogue:Array<String> = ['blah blah blah', 'coolswag'];
 	var dialogueJson:DialogueFile = null;
@@ -279,6 +295,10 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
+
+	// The Wafley/Denger
+
+	var walking:FlxSprite;
 
 	//Achievement shit
 	var keysPressed:Array<Bool> = [];
@@ -476,31 +496,46 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
+			case 'disney_lab': //lab fuck sexy uwu
+
+			  sexyBG = new BGSprite(('disney'), 500, 400, 1, 1);
+			  sexyBG.scrollFactor.set(1, 1);
+			  add(sexyBG);
+
+			  sexyTrees = new BGSprite(('trees'), 500, 300, 0.9, 0.9);
+			  add(sexyTrees);
+
 			case 'stage': //Week 1
 				var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
-				add(bg);
+				//add(bg);
 
 				var stageFront:BGSprite = new BGSprite('stagefront', -650, 600, 0.9, 0.9);
 				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 				stageFront.updateHitbox();
-				add(stageFront);
+				//add(stageFront);
 				if(!ClientPrefs.lowQuality) {
 					var stageLight:BGSprite = new BGSprite('stage_light', -125, -100, 0.9, 0.9);
 					stageLight.setGraphicSize(Std.int(stageLight.width * 1.1));
 					stageLight.updateHitbox();
-					add(stageLight);
+					//add(stageLight);
 					var stageLight:BGSprite = new BGSprite('stage_light', 1225, -100, 0.9, 0.9);
 					stageLight.setGraphicSize(Std.int(stageLight.width * 1.1));
 					stageLight.updateHitbox();
 					stageLight.flipX = true;
-					add(stageLight);
+					//add(stageLight);
 
 					var stageCurtains:BGSprite = new BGSprite('stagecurtains', -500, -300, 1.3, 1.3);
 					stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
 					stageCurtains.updateHitbox();
-					add(stageCurtains);
+					//add(stageCurtains);
 				}
 				dadbattleSmokes = new FlxSpriteGroup(); //troll'd
+				var s:FlxBackdrop = new FlxBackdrop(Paths.image('placeholder'), 1, 0, true, false, 1, 0);
+				s.velocity.set(500, 0);
+				s.x = 500;
+				s.scrollFactor.set(0, 0);
+				s.updateHitbox();
+				add(s);
 
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
@@ -1183,6 +1218,30 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.downScroll) {
 			botplayTxt.y = timeBarBG.y - 78;
 		}
+		texDialogue = new FlxText(/*cock*/);
+		texDialogue.text = '';
+		texDialogue.x = 326;
+		texDialogue.y = 600;
+		texDialogue.setFormat(Paths.font('pixel.ttf'), 55);
+		texDialogue.visible = false;
+		texDialogue.scrollFactor.set(0, 0);
+		texDialogue.setBorderStyle(OUTLINE, FlxColor.BLACK);
+
+		cinematicLines = new FlxSprite(920, 1010).makeGraphic(790, 900, FlxColor.BLACK);
+		cinematicLines.angle = -45;
+		cinematicLines.scrollFactor.set();
+		
+
+		cinematicLines1 = new FlxSprite(-400, -1000).makeGraphic(790, 900, FlxColor.BLACK);
+		cinematicLines1.angle = 45;
+		cinematicLines1.scrollFactor.set();
+
+		if(curSong == 'Vehement')
+			{
+				add(cinematicLines);
+				add(cinematicLines1);
+				add(texDialogue);
+			}
 
 		strumLineNotes.cameras = [camHUD];
 		grpNoteSplashes.cameras = [camHUD];
@@ -1197,6 +1256,9 @@ class PlayState extends MusicBeatState
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
+		cinematicLines.cameras = [camOther];
+		cinematicLines1.cameras = [camOther];
+		texDialogue.cameras = [camOther];
 
 		// if (SONG.song == 'South')
 		// FlxG.camera.alpha = 0.7;
@@ -2026,7 +2088,7 @@ class PlayState extends MusicBeatState
 				switch (swagCounter)
 				{
 					case 0:
-						FlxG.sound.play(Paths.sound('intro3' + introSoundsSuffix), 0.6);
+						FlxG.sound.play(Paths.sound('saster saying 3 2 1 go with mickey voice/three'), 0.6);
 					case 1:
 						countdownReady = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 						countdownReady.cameras = [camHUD];
@@ -2047,7 +2109,7 @@ class PlayState extends MusicBeatState
 								countdownReady.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('intro2' + introSoundsSuffix), 0.6);
+						FlxG.sound.play(Paths.sound('saster saying 3 2 1 go with mickey voice/two'), 0.6);
 					case 2:
 						countdownSet = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 						countdownSet.cameras = [camHUD];
@@ -2067,7 +2129,7 @@ class PlayState extends MusicBeatState
 								countdownSet.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('intro1' + introSoundsSuffix), 0.6);
+						FlxG.sound.play(Paths.sound('saster saying 3 2 1 go with mickey voice/one'), 0.6);
 					case 3:
 						countdownGo = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 						countdownGo.cameras = [camHUD];
@@ -2089,7 +2151,7 @@ class PlayState extends MusicBeatState
 								countdownGo.destroy();
 							}
 						});
-						FlxG.sound.play(Paths.sound('introGo' + introSoundsSuffix), 0.6);
+						FlxG.sound.play(Paths.sound('saster saying 3 2 1 go with mickey voice/lets sing mf'), 0.6);
 					case 4:
 				}
 
@@ -2875,7 +2937,17 @@ class PlayState extends MusicBeatState
 			}
 		}
 
+		
+
 		super.update(elapsed);
+		if(curSong == 'Bopeebo')
+		{
+			FlxG.camera.setFilters([new ShaderFilter(shitShader.realShader)]);
+			//camHUD.setFilters([new ShaderFilter(shitShader.realShader)]);
+			shitShader.aFloat += elapsed * 0.1;
+			FlxG.game.filtersEnabled = true;
+		}
+
 
 		setOnLuas('curDecStep', curDecStep);
 		setOnLuas('curDecBeat', curDecBeat);
@@ -4802,6 +4874,7 @@ class PlayState extends MusicBeatState
 	var lightningOffset:Int = 8;
 
 	var lastBeatHit:Int = -1;
+	
 
 	override function beatHit()
 	{
@@ -4890,6 +4963,51 @@ class PlayState extends MusicBeatState
 		{
 			lightningStrikeShit();
 		}
+		switch(curSong)
+		{
+			case 'Vehement':
+
+
+				if(curBeat == 166)
+					{
+						texDialogue.visible = true;
+						texDialogue.text = dialog1;
+						FlxTween.tween(camHUD, {alpha: 0}, 0.2, {ease: FlxEase.quadInOut}); //hi widen i can explain
+						FlxTween.tween(cinematicLines, {y: 500}, 0.3, {ease: FlxEase.quadInOut});
+						FlxTween.tween(cinematicLines1, {y: -500}, 0.3, {ease: FlxEase.quadInOut});
+						FlxG.camera.shake(0.0004);
+						texDialogue.color = FlxColor.RED;
+
+						trace(texDialogue.text);
+				 
+					}
+					if(curBeat == 172)
+						{
+							texDialogue.visible = false;
+							FlxG.camera.shake(0);
+							texDialogue.color = FlxColor.WHITE;
+						}
+							if(curBeat == 176)
+								{
+									texDialogue.visible = false;
+									texDialogue.x = 500;
+									
+								}
+								if(curBeat == 177)
+									{
+										texDialogue.visible = true;
+										texDialogue.text = dialog2;
+										trace(texDialogue.text);
+									}
+									if(curBeat == 180)
+										{
+											texDialogue.visible = false;
+											FlxTween.tween(camHUD, {alpha: 1}, 1, {ease: FlxEase.quadInOut}); //hi widen i can explain
+											FlxTween.tween(cinematicLines, {y: 1000}, 0.3, {ease: FlxEase.quadInOut});
+											FlxTween.tween(cinematicLines1, {y: -1000}, 0.3, {ease: FlxEase.quadInOut});
+										}
+		}
+		
 		lastBeatHit = curBeat;
 
 		setOnLuas('curBeat', curBeat); //DAWGG?????
@@ -5113,4 +5231,6 @@ class PlayState extends MusicBeatState
 
 	var curLight:Int = -1;
 	var curLightEvent:Int = -1;
+
+	// ow ow e e e a ow o
 }
